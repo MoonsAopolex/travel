@@ -1,0 +1,47 @@
+#端口号
+server:
+  port: 80
+
+#数据源配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql:///travel?serverTimezone=UTC
+    url: jdbc:mysql://192.168.66.100/travel?serverTimezone=UTC
+    username: root
+    password: root
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  thymeleaf:
+    mode: HTML
+    cache: false
+    prefix: classpath:/templates
+
+# mybatis-plus 配置
+mybatis-plus:
+  global-config:
+    db-config:
+      #主键自增策略
+      id-type: auto
+  configuration:
+    #自动驼峰命名关闭
+    map-underscore-to-camel-case: false
+    #开启sql日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# 日志格式
+logging:
+  pattern:
+    console: '%d{HH:mm:ss.SSS} %clr(%-5level) ---  [%-15thread] %cyan(%-50logger{50}):%msg%n'
+
+mail:
+  user: 1667653102@qq.com
+  password: xslbefcbskhebaah
+
+# 项目路径
+project:
+#  path: http://localhost
+  path: http://192.168.66.100
+

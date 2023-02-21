@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>首页</title>
+<th:block th:replace="/backstage/common_resource::common_css"/>
+<th:block th:replace="/backstage/common_resource::common_js"/>
+</head>
+
+<body class="hold-transition skin-purple sidebar-mini">
+<!-- 页头 -->
+<header th:replace="~{/backstage/common_header::header}"></header>
+<!-- 侧栏 -->
+<aside th:replace="~{/backstage/common_aside::aside}"></aside>
+    <!-- 内容区域 -->
+<div class="content-wrapper">
+
+    <!-- 内容头部 -->
+    <section class="content-header">
+        <h1>
+            旅游网后台管理系统
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+        </ol>
+    </section>
+    <!-- 内容头部 /-->
+
+    <!-- 正文区域 -->
+    <section class="content">
+
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">欢迎操作</h3>
+            </div>
+
+            <div class="box-body">
+
+                旅游网祝您生活愉快！
+
+            </div>
+        </div>
+
+    </section>
+    <!-- 正文区域 /-->
+
+</div>
+
+<!-- 页脚 -->
+<footer th:replace="~{/backstage/common_footer::footer}"></footer>
+</body>
+
+</html>

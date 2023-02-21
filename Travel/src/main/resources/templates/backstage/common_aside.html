@@ -1,0 +1,96 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<!-- 导航侧栏 -->
+<aside class="main-sidebar" th:fragment="aside">
+    <section>
+        <section class="sidebar">
+            <!-- Sidebar user panel -->
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="/backstage/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p th:text="${#authentication.name}">管理员</p>
+                    <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
+                </div>
+            </div>
+
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu">
+                <li class="header">菜单</li>
+
+                <li id="admin-index"><a href="/backstage/index"><i class="fa fa-dashboard"></i> <span>首页</span></a></li>
+
+                <!-- 菜单 -->
+                <li class="treeview" id="system-mana">
+                    <a href="#">
+                        <i class="fa fa-folder" id="system"></i> <span>系统管理</span>
+                        <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                    </a>
+                    <ul class="treeview-menu" id="usermanage">
+
+                        <li id="admin" sec:authorize="hasAnyAuthority('/admin/all')">
+                            <a href="/backstage/admin/all">
+                                <i class="fa fa-circle-o"></i> 用户管理
+                            </a>
+                        </li>
+
+                        <li id="role" sec:authorize="hasAnyAuthority('/role/all')">
+                            <a href="/backstage/role/all">
+                                <i class="fa fa-circle-o"></i> 角色管理
+                            </a>
+                        </li>
+
+                        <li id="permission" sec:authorize="hasAnyAuthority('/permission/all')">
+                            <a href="/backstage/permission/all">
+                                <i class="fa fa-circle-o"></i> 权限管理
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="treeview" id="business-mana">
+                    <a href="#">
+                        <i class="fa fa-laptop" id="business"></i> <span>业务管理</span>
+                        <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                    </a>
+                    <ul class="treeview-menu" id="category-mana">
+
+                        <li id="category">
+                            <a href="/backstage/category/all">
+                                <i class="fa fa-circle-o"></i> 类型管理
+                            </a>
+                        </li>
+
+                        <li id="product">
+                            <a href="/backstage/product/all">
+                                <i class="fa fa-circle-o"></i> 产品管理
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+    </section>
+    <script>
+        $(function () {
+            // 点击外层菜单时记录他的id
+            $(".treeview").click(function () {
+                window.sessionStorage.menu = $(this).attr("id");
+            })
+            // 点击内层菜单时记录他的id
+            $(".treeview-menu li").click(function () {
+                window.sessionStorage.menu2 = $(this).attr("id");
+            })
+            // 对已点击的外层菜单添加class属性为active
+            $("#"+window.sessionStorage.menu).addClass("active");
+            // 对已点击的内层菜单添加颜色样式
+            $("#"+window.sessionStorage.menu2+" a").css("color","white");
+        })
+    </script>
+</aside>
+</html>
